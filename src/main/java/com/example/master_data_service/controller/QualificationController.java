@@ -1,6 +1,5 @@
 package com.example.master_data_service.controller;
 
-import com.example.master_data_service.entity.Qualification;
 import com.example.master_data_service.service.QualificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
