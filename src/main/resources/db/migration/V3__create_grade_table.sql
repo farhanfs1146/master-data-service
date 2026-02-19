@@ -1,0 +1,8 @@
+CREATE TABLE grades
+(
+    id         SERIAL PRIMARY KEY,
+    code       VARCHAR(50) UNIQUE NOT NULL,
+    name       VARCHAR(100) UNIQUE NOT NULL,
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
