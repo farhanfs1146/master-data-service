@@ -1,5 +1,6 @@
 package com.example.master_data_service.service.impl;
 
+import com.example.master_data_service.dto.request.QualificationRequest;
 import com.example.master_data_service.dto.response.QualificationResponse;
 import com.example.master_data_service.entity.Qualification;
 import com.example.master_data_service.repository.QualificationRepository;
@@ -31,8 +32,17 @@ public class QualificationServiceImpl implements QualificationService {
     }
 
     @Override
-    public QualificationResponse save() {
-        return null;
+    public QualificationResponse AddNwQualification(QualificationRequest request) {
+        if (qualificationRepository.existsByCode(request.getCode())) {
+            throw new RuntimeException("Qualification with code " + request.getCode() + " already exists");
+        }
+        Qualification qualification = Qualification.builder()
+                .name(request.getName())
+                .code(request.getCode())
+                .isActive(request.getIsActive())
+                .build();
+        qualificationRepository.save(qualification);
+        return mapToResponse(qualification);
     }
 
     @Override

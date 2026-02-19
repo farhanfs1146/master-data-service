@@ -18,6 +18,6 @@ public class QualificationRequest {
     private String name;
 //    private String description;
     @NotNull(message = "Qualification status must not be null")
-    private Boolean is_active;
+    private Boolean isActive;
 
 }
