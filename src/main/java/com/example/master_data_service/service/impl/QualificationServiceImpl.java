@@ -3,6 +3,8 @@ package com.example.master_data_service.service.impl;
 import com.example.master_data_service.dto.request.QualificationRequest;
 import com.example.master_data_service.dto.response.QualificationResponse;
 import com.example.master_data_service.entity.Qualification;
+import com.example.master_data_service.exception.ResourceNotFoundException;
+import com.example.master_data_service.exception.ValidationException;
 import com.example.master_data_service.repository.QualificationRepository;
 import com.example.master_data_service.service.QualificationService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +19,7 @@ public class QualificationServiceImpl implements QualificationService {
     @Override
     public QualificationResponse findById(Integer id) {
 
-        var qualification = qualificationRepository.findById(id).orElseThrow(()-> new RuntimeException("Qualification not found with id " + id));
+        var qualification = qualificationRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Qualification not found with id " + id));
         return mapToResponse(qualification);
     }
 
@@ -34,7 +36,7 @@ public class QualificationServiceImpl implements QualificationService {
     @Override
     public QualificationResponse AddNwQualification(QualificationRequest request) {
         if (qualificationRepository.existsByCode(request.getCode())) {
-            throw new RuntimeException("Qualification with code " + request.getCode() + " already exists");
+            throw new ValidationException("Qualification with code " + request.getCode() + " already exists");
         }
         Qualification qualification = Qualification.builder()
                 .name(request.getName())
