@@ -14,5 +14,5 @@ public class QualificationResponse {
     private String code;
     private String name;
     //    private String description;
-    private Boolean is_active;
+    private Boolean isActive;
 }
