@@ -90,7 +90,11 @@
             <version>2.7.0</version>
         </dependency>
 
-
+        <!-- Kafka events dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-kafka</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
